@@ -1,0 +1,26 @@
+Here are a few of my favorite commands when my automation fails and I'm forced to actually log into a linux instance.
+
+#Because it seems like I'm always troubleshooting EMR's Jupyter container
+
+docker exec -it jupyterhub /bin/bash 
+
+#Because I would like to know if it is at least running
+docker stats
+
+#because I can quickly see who is misbehaving
+top
+
+#Because I need to find a file of a certain pattern under the current directory, but not too far
+find . -maxdepth 2 -name *.conf
+
+#Because I need to verify Ansible formatted and mounted attached volumes correctly
+lsblk -fs
+
+#because I hate it when I run out of space on the root volume (because somebody else didn't automate mounting /var/log to a secondary volume)
+df -h
+
+#because this data scientist keeps breaking jupyterhub and I need to know that they did
+cat /var/log/jupyter/jupyter.log | grep yeahthatguyagain
+
+#check to see what processes are using conda
+ps aux | grep conda

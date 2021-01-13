@@ -1,0 +1,3 @@
+In linux, there are several options for running processes in the background, including nohup, bg, cron, or registering a script as a systemd service. Google has a more comprehensiv answer here: https://www.tecmint.com/run-linux-command-process-in-background-detach-process/
+
+Personally, I use nohup a lot in AWS EMR Step functions to install conda packages: conda takes notioriously long, and EMR will fail the entire cluster if it doesn't complete all startup steps in about 20 minutes. Using nohup allows me to get the core cluster up and running while completing conda installation in the background.
